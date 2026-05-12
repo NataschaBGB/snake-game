@@ -127,10 +127,10 @@ This will launch the application and access your webcam to start the snake game
 
 The system works in 4 steps:
 
-🎥 Webcam captures your video feed
-✋ MediaPipe detects hand landmarks in real-time
-🧠 Gesture position is mapped to game controls
-🐍 Snake moves instantly based on your hand motion
+- 🎥 Webcam captures your video feed
+- ✋ MediaPipe detects hand landmarks in real-time
+- 🧠 Gesture position is mapped to game controls
+- 🐍 Snake moves instantly based on your hand motion
 
 ---
 
