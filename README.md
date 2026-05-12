@@ -9,6 +9,7 @@ Description of the project, its purpose, and what it does.
 
 ## 2) Create project folder where you want to store the code and files for this project
 - Name it "snake" or any name you prefer
+
 Make sure to not create the project folder in OneDrive or any cloud-synced folder, as this can cause issues with file access and performance
 
 ## 3) Open project folder in VS Code
