@@ -83,7 +83,7 @@ In the VS Code terminal, run the following command:
 ✔️ If no errors appear → installation is successful
 
 
-### 8) Copy the code from the main Python file
+### 8) Copy the code from the snake.py file
 Paste the copied code into the file you created in your project folder
 
 ⚠️ Make sure to save the file after pasting the code
