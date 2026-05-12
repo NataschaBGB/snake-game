@@ -22,13 +22,14 @@ It combines:
 
 ## ⚙️ Installation
 
-### 🐍 1) Install Python
-Download Python 3.11 here:
+### 🐍 1) Install Python on your PC
+Install Python 3.11 or lower from the official Python website:
 👉 https://www.python.org/downloads/
 
 ⚠️ Important:
-- Use **Python 3.11 or lower**
 - Python 3.12+ may break MediaPipe compatibility
+
+This project was developed and tested with Python 3.11.3.
 
 
 ### 📁 2) Create project folder
@@ -50,7 +51,7 @@ Create a Python file named `main.py` (or `snake.py` if you prefer) inside your p
 This is optional but recommended to keep the project dependencies isolated from the global Python installation
 
 In the VS Code terminal, run the following command:
-```powershell id="venv_create"
+```powershell
 python -m venv venv
 ```
 ⚠️ It may take a few seconds to create the virtual environment, so be patient
@@ -61,7 +62,7 @@ If VS Code prompts you to select a Python interpreter, choose the one from the v
 
 If VS Code does not prompt you, you can manually activate the virtual environment using the following command in the terminal:
 ```powershell
-    .\.venv\Scripts\Activate.ps1
+.\.venv\Scripts\Activate.ps1
 ```
 ⚠️ You may need to restart the terminal after activating the virtual environment
 
@@ -71,19 +72,19 @@ If VS Code does not prompt you, you can manually activate the virtual environmen
 ### 📦 7) Install the required packages
 In VS Code terminal, run the following command:
 ```powershell
-    pip install wheel mediapipe==0.10.14 opencv-python imutils numpy
+pip install wheel mediapipe==0.10.14 opencv-python imutils numpy
 ```
 🧪 Verify MediaPipe installation
 - This is to ensure that mediapipe was installed correctly and is accessible in your Python environment, because mediapipe is an old package and may have compatibility issues with newer versions of Python
 
 In the VS Code terminal, run the following command:
 ```powershell
-    python -c "import mediapipe as mp; print(mp.solutions.hands)"
+python -c "import mediapipe as mp; print(mp.solutions.hands)"
 ```
 ✔️ If no errors appear → installation is successful
 
 
-### 8) Copy the code from the snake.py file
+### 8) Copy the code from the main Python file
 Paste the copied code into the file you created in your project folder
 
 ⚠️ Make sure to save the file after pasting the code
@@ -93,7 +94,7 @@ Paste the copied code into the file you created in your project folder
 ## 🚀 Run the Game
 To start the game, run the following command in the terminal:
 ```powershell
-    python main.py
+python main.py
 ```
 
 If you named your main file differently, replace "main.py" with the name of your file
@@ -102,9 +103,27 @@ This will launch the application and access your webcam to start the snake game
 
 ---
 
-## 🎥 How It Works
+## 🎮 Controls
 
-![hand_landmarks](image.png)
+- 🐍 Moving the snake:
+    - 🟢 A green dot will appear on your index finger tip. This dot represents the snake's head. Move your hand around to control the snake's movement in the game
+
+- ⏸️ Pause/Start game:
+    - ✊ Fold all fingers into a fist for 1 second to pause the game
+    - 🖐️ → ✊ Open your hand and fold all fingers into a fist again for 1 second to resume the game
+
+- 💀 Game Over:
+    - ✊ When the snake collides with the walls, it will trigger a game over state. Fold all fingers into a fist for 2 seconds to restart the game
+
+- 🏆 You Win!
+    - ✊ When the snake reaches the maximum length, it will trigger a win state. Fold all fingers into a fist for 2 seconds to start a new game
+
+- 🚪 Exit game:
+    - ⌨️ Press the "esc" key on your keyboard to exit the game at any time
+
+### 🎥 How It Works
+
+![hand_landmarks](https://static0.makeuseofimages.com/wordpress/wp-content/uploads/2023/01/hand-tracking-python-hand-landmarks.jpg?q=50&fit=crop&w=825&dpr=1.5)
 
 The system works in 4 steps:
 
@@ -112,15 +131,6 @@ The system works in 4 steps:
 ✋ MediaPipe detects hand landmarks in real-time
 🧠 Gesture position is mapped to game controls
 🐍 Snake moves instantly based on your hand motion
-
----
-
-## 🛠️ Tech Stack
-🐍 Python
-👁️ OpenCV
-✋ MediaPipe
-📊 NumPy
-⚙️ Imutils
 
 ---
 
@@ -137,9 +147,3 @@ The system works in 4 steps:
 👁️ Webcam not opening?
 - 🔐 Check camera permissions
 - 💻 Close apps using webcam (Zoom, Teams, etc.)
-
----
-
-## 📄 License
-
-Free to use for educational and personal projects 🎓
