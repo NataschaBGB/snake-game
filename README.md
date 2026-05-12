@@ -3,7 +3,7 @@ Description of the project, its purpose, and what it does.
 
 
 # Installation
-1) Make sure you have Python installed on your system
+## 1) Make sure you have Python installed on your system
 Install Python 3.11 or lower from the official Python website: https://www.python.org/downloads/
 Python 3.12 and above may have compatibility issues with mediapipe, which is a key dependency for this project
 
@@ -62,5 +62,5 @@ To start the game, run the following command in the terminal:
 This will launch the application and access your webcam to start the snake game
 
 ## Game Controls
-Moving the snake:
+### Moving the snake:
 - 
