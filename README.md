@@ -39,7 +39,7 @@ Description of the project, its purpose, and what it does.
     pip install wheel mediapipe==0.10.14 opencv-python imutils numpy
 ```
 - Verify the installation of mediapipe:
-- - This is to ensure that mediapipe was installed correctly and is accessible in your Python environment, because mediapipe is an old package and may have compatibility issues with newer versions of Python
+    - This is to ensure that mediapipe was installed correctly and is accessible in your Python environment, because mediapipe is an old package and may have compatibility issues with newer versions of Python
 - In the VS Code terminal, run the following command:
 ```powershell
     python -c "import mediapipe as mp; print(mp.solutions.hands)"
