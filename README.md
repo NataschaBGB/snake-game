@@ -140,8 +140,8 @@ The system works in 4 steps:
 
 - Reinstall dependencies:
 ```powershell
-    pip uninstall mediapipe
-    pip install mediapipe==0.10.14
+pip uninstall mediapipe
+pip install mediapipe==0.10.14
 ```
 
 👁️ Webcam not opening?
