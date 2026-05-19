@@ -2,7 +2,7 @@
 
 # OpenCV is used for camera access, drawing graphics,
 # showing windows, and handling the game visuals
-import cv2
+import cv2 as cv
 
 # imutils helps simplify image resizing
 import imutils
@@ -218,7 +218,7 @@ def reset_game():
 #
 # 0 means default webcam
 # If you have multiple cameras and want to use a different one, you can change this number to 1, 2, etc. depending on which camera you want to access.
-cap = cv2.VideoCapture(0)
+cap = cv.VideoCapture(0)
 
 
 
@@ -251,7 +251,7 @@ while True:
 
     # Flip frame horizontally like a mirror
     # This makes it more intuitive to control the snake, because your hand movement will match the snake movement on screen.
-    frame = cv2.flip(frame, 1)
+    frame = cv.flip(frame, 1)
 
     # Get frame height and width
     # the shape is determined by the camera resolution and the resizing we do with imutils
@@ -274,10 +274,10 @@ while True:
         apple_y = np.random.randint(50, h - 50)
 
     # Draw apple as a red circle
-    # cv2.circle() draws a filled circle on the frame at the apple's coordinates. The circle has a radius of 10 pixels and is colored red (0, 0, 255 in BGR color space).
+    # cv as cv.circle() draws a filled circle on the frame at the apple's coordinates. The circle has a radius of 10 pixels and is colored red (0, 0, 255 in BGR color space).
     # Use the frame inside the main loop to draw the apple on every frame, so it appears on the screen until the snake eats it.
     # When the snake eats the apple (when the snakes head has the same coordinates as the apple), we set apple_x and apple_y to None, which triggers the creation of a new apple in a random location on the next frame.
-    cv2.circle(frame, (apple_x, apple_y), 10, (0, 0, 255), -1)
+    cv.circle(frame, (apple_x, apple_y), 10, (0, 0, 255), -1)
 
 
 
@@ -286,10 +286,10 @@ while True:
     # Convert image from BGR to RGB
     # OpenCV uses BGR
     # MediaPipe expects RGB
-    # cv2.cvtColor() is used to convert the color space of the image from BGR (which is the default color format used by OpenCV) to RGB (which is the color format expected by MediaPipe for hand tracking).
+    # cv as cv.cvtColor() is used to convert the color space of the image from BGR (which is the default color format used by OpenCV) to RGB (which is the color format expected by MediaPipe for hand tracking).
     # This conversion is necessary because if we pass a BGR image to MediaPipe, it will not detect the hands correctly, since the color channels will be interpreted incorrectly.
     # By converting to RGB, we ensure that the hand tracking AI receives the image in the correct format for accurate detection.
-    rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    rgb = cv.cvtColor(frame, cv.COLOR_BGR2RGB)
 
     # Process image with MediaPipe AI
     # process() returns hand landmark positions if a hand is detected
@@ -382,7 +382,7 @@ while True:
 
             # Use the center variable to draw a green circle on the screen at the position of the index fingertip
             # This serves as a visual indicator of where the snake's head is and helps the player see how their hand movement is controlling the snake
-            cv2.circle(frame, center, 10, (0, 255, 0), -1)
+            cv.circle(frame, center, 10, (0, 255, 0), -1)
 
 
 
@@ -497,7 +497,7 @@ while True:
         bar_color = (0, 0, 255) if game_over or game_won else (0, 255, 0)
 
         # Draw a rectangle representing the loading bar
-        cv2.rectangle(
+        cv.rectangle(
             frame,
             # The top-left corner of the rectangle is fixed at (50, 50), which means the loading bar will always start at this position on the screen
             (50, 50),
@@ -512,14 +512,14 @@ while True:
 
         # Show helper text
         # We also display the text "FIST DETECTED" on the screen to provide feedback to the player that their fist gesture has been recognized and the loading bar is filling up.
-        cv2.putText(
+        cv.putText(
             frame,
             # Text to display on the screen
             "FIST DETECTED",
             # Position of the text on the screen (x=50, y=100 to place it below the loading bar)
             (50, 100),
             # Font type (using a simple built-in font provided by OpenCV)
-            cv2.FONT_HERSHEY_SIMPLEX,
+            cv.FONT_HERSHEY_SIMPLEX,
             # Font scale (1 means normal size, you can adjust this to make the text larger or smaller)
             1,
             # Text color (0, 0, 255 in BGR for red)
@@ -605,7 +605,7 @@ while True:
     # Draw lines between all snake points
     # the snake variable is a list of points representing the segments of the snake's body, where each point is a tuple (x, y) of pixel coordinates on the screen.
     # loop through the snake list starting from the second point (index 1 because 0 is the head) to the end of the list, 
-    # and for each point, we draw a line from the previous point (snake[i - 1]) to the current point (snake[i]) using cv2.line().
+    # and for each point, we draw a line from the previous point (snake[i - 1]) to the current point (snake[i]) using cv as cv.line().
     for i in range(1, len(snake)):
 
         # Snake thickness grows slightly with size
@@ -614,7 +614,7 @@ while True:
 
         # Draw snake segment
         # Draw a line between the previous point (snake[i - 1]) and the current point (snake[i]) with the specified thickness and color (0, 255, 0 in BGR for green).
-        cv2.line(
+        cv.line(
             frame,
             snake[i - 1],
             snake[i],
@@ -627,8 +627,8 @@ while True:
     # MARK: UI Elements
 
     # Draw score text
-    # We display the current score in the top-right corner of the screen using cv2.putText()
-    cv2.putText(
+    # We display the current score in the top-right corner of the screen using cv as cv.putText()
+    cv.putText(
         # the frame on which to draw the text
         frame,
         # the text to display, which includes the current score variable
@@ -636,7 +636,7 @@ while True:
         # the position of the text on the screen (x=400, y=50 to place it in the top-right corner)
         (400, 50),
         # the font type (using a simple built-in font provided by OpenCV)
-        cv2.FONT_HERSHEY_SIMPLEX,
+        cv.FONT_HERSHEY_SIMPLEX,
         # the font scale (1 means normal size, you can adjust this to make the text larger or smaller)
         1,
         # the text color (255, 0, 200 in BGR for a pinkish color)
@@ -649,11 +649,11 @@ while True:
     # If the game is currently paused, we display the text "PAUSED" in the center of the screen to indicate to the player that the game is paused and they can use the fist gesture to resume.
     if paused:
 
-        cv2.putText(
+        cv.putText(
             frame,
             "PAUSED",
             (160, 250),
-            cv2.FONT_HERSHEY_SIMPLEX,
+            cv.FONT_HERSHEY_SIMPLEX,
             2,
             (0, 255, 255),
             4
@@ -663,11 +663,11 @@ while True:
     # When the player resumes the game from a paused state, we set show_start_text to True and start a timer (start_text_time) to track how long the "START" message has been displayed.
     if show_start_text:
 
-        cv2.putText(
+        cv.putText(
             frame,
             "START",
             (180, 250),
-            cv2.FONT_HERSHEY_SIMPLEX,
+            cv.FONT_HERSHEY_SIMPLEX,
             2,
             (0, 255, 0),
             4
@@ -682,20 +682,20 @@ while True:
     # If the player has won the game by reaching the max score, we set game_won to True, which triggers this block of code to display the "YOU WIN !!" message on the screen along with instructions to hold a fist to restart the game.
     if game_won:
 
-        cv2.putText(
+        cv.putText(
             frame,
             "YOU WIN !!",
             (100, 250),
-            cv2.FONT_HERSHEY_SIMPLEX,
+            cv.FONT_HERSHEY_SIMPLEX,
             2,
             (255, 255, 0),
             4
         )
-        cv2.putText(
+        cv.putText(
             frame,
             "HOLD FIST TO RESTART",
             (40, 320),
-            cv2.FONT_HERSHEY_SIMPLEX,
+            cv.FONT_HERSHEY_SIMPLEX,
             1,
             (255, 255, 255),
             2
@@ -705,20 +705,20 @@ while True:
     # If the player collides with the wall, we set game_over to True, which triggers this block of code to display the "GAME OVER" message on the screen along with instructions to hold a fist to restart the game.
     if game_over:
 
-        cv2.putText(
+        cv.putText(
             frame,
             "GAME OVER",
             (100, 250),
-            cv2.FONT_HERSHEY_SIMPLEX,
+            cv.FONT_HERSHEY_SIMPLEX,
             2,
             (0, 0, 255),
             4
         )
-        cv2.putText(
+        cv.putText(
             frame,
             "HOLD FIST TO RESTART",
             (40, 320),
-            cv2.FONT_HERSHEY_SIMPLEX,
+            cv.FONT_HERSHEY_SIMPLEX,
             1,
             (255, 255, 255),
             2
@@ -729,16 +729,16 @@ while True:
     # MARK: Display Frame
 
     # Display the final game window
-    # After processing all the game logic, drawing the snake, apple, and UI elements on the frame, we use cv2.imshow() to display the frame in a window titled "Snake Game (MediaPipe)"
+    # After processing all the game logic, drawing the snake, apple, and UI elements on the frame, we use cv.imshow() to display the frame in a window titled "Snake Game (MediaPipe)"
     # This will show the live video feed from the webcam with the game elements overlaid on top, allowing the player to see their hand controlling the snake and interact with the game in real-time
-    cv2.imshow("Snake Game (MediaPipe)", frame)
+    cv.imshow("Snake Game (MediaPipe)", frame)
 
 
 
     # MARK: Exit Game
 
     # If ESC key is pressed, stop program
-    if cv2.waitKey(1) & 0xFF == 27:
+    if cv.waitKey(1) & 0xFF == 27:
         break
 
 
@@ -751,6 +751,6 @@ while True:
 cap.release()
 
 # Close all OpenCV windows
-# cv2.destroyAllWindows() is called to close any OpenCV windows that were opened during the game, such as the game window displaying the webcam feed and game elements.
+# cv.destroyAllWindows() is called to close any OpenCV windows that were opened during the game, such as the game window displaying the webcam feed and game elements.
 # This ensures that all windows are properly closed and the program exits cleanly without leaving any open windows or resources hanging
-cv2.destroyAllWindows()
+cv.destroyAllWindows()
