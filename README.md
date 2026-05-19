@@ -125,7 +125,7 @@ This will launch the application and access your webcam to start the snake game
 
 ### 🎥 How It Works
 
-![hand_landmarks](https://static0.makeuseofimages.com/wordpress/wp-content/uploads/2023/01/hand-tracking-python-hand-landmarks.jpg?q=50&fit=crop&w=825&dpr=1.5)
+![hand_landmarks](https://mediapipe.dev/images/mobile/hand_landmarks.png)
 
 The system works in 4 steps:
 
