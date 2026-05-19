@@ -50,6 +50,8 @@ Create a Python file named `main.py` (or `snake.py` if you prefer) inside your p
 ### 🌐 5) Create virtual environment
 This is optional but recommended to keep the project dependencies isolated from the global Python installation
 
+Make sure to use the poweshell terminal!
+
 In the VS Code terminal, run the following command:
 ```powershell
 python -m venv venv
