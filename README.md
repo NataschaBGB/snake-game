@@ -125,7 +125,7 @@ This will launch the application and access your webcam to start the snake game
 
 ### 🎥 How It Works
 
-![hand_landmarks]([(https://dl.acm.org/cms/attachment/html/10.1145/3654522.3654540/assets/html/images/image1.png)](https://dl.acm.org/cms/attachment/html/10.1145/3654522.3654540/assets/html/images/image1.png))
+![hand_landmarks](https://dl.acm.org/cms/attachment/html/10.1145/3654522.3654540/assets/html/images/image1.png)
 
 The system works in 4 steps:
 
